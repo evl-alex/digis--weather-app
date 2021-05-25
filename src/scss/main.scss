@@ -1,0 +1,39 @@
+$bg-color: #f5f8fc;
+$bg-color-light: #ffffff;
+$input-border-color: #cdcdcd;
+$error-text-color: red;
+
+body {
+  background-color: $bg-color;
+}
+
+.forecast{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-search {
+
+    input {
+      padding: 5px 10px;
+      background-color: $bg-color-light;
+      border: 1px solid $input-border-color;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    button {
+      border: 1px solid $input-border-color;
+      background-color: $bg-color-light;
+      border-radius: 4px;
+      padding: 5px 10px;
+    }
+  }
+
+  &-display {
+    margin: 10px;
+  }
+  &-error {
+    color: $error-text-color;
+  }
+}
