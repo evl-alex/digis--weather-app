@@ -2,21 +2,21 @@ import { connect } from 'react-redux'
 import Chart from './Chart'
 
 function Forecast(props) {
-    const foreCastData = props.data.map(day => {
-        let dateTxt = new Date(day.dt * 1000)
-        dateTxt = `${dateTxt.getHours()}:${dateTxt.getMinutes()} ${dateTxt.getDate()} ${dateTxt.getMonth()}`
+    const forecastData = props.data.map(day => {
+        let dateTxt = new Date(day.dt * 1000).toString()
+        dateTxt = dateTxt.slice(0, dateTxt.indexOf('GMT') -4)
         const temp = parseInt(day.main.temp) - 273
         return {
             dateTxt,
             temp
         }
     })
-    console.log(`forecast: `, foreCastData)
-    const forecast = props.errorMessage ?
-        <div className="forecast-error">{props.errorMessage}</div> :
-        <div className="forecast-info">
-            <h2>{props.city}</h2>
 
+    const forecast = (props.errorMessage || forecastData.length === 0) ?
+        <div className="forecast-display__error">{props.errorMessage}</div> :
+        <div>
+            <h2 className="forecast-display__header">{props.city}</h2>
+            <Chart forecast={forecastData} />
         </div>
 
     return (

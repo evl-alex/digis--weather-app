@@ -1,11 +1,12 @@
 import { Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts'
 
-export default function Chart({ data }) {
+export default function Chart(props) {
+    const { forecast } = props
     return(
         <BarChart
             width={500}
             height={300}
-            data={data}
+            data={forecast}
             margin={{
                 top: 5,
                 right: 30,
@@ -14,12 +15,11 @@ export default function Chart({ data }) {
             }}
         >
             <CartesianGrid strokeDasharray="3 3"/>
-            <XAxis dataKey="name"/>
+            <XAxis dataKey="dateTxt" hide={true} />
             <YAxis/>
             <Tooltip/>
-            <Legend/>
-            <Bar dataKey="pv" fill="#8884d8"/>
-            <Bar dataKey="uv" fill="#82ca9d"/>
+            <Legend />
+            <Bar dataKey="temp" fill="#8884d8" name="Temp °C"/>
         </BarChart>
     )
 }

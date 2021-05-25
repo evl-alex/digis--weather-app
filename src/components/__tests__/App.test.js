@@ -14,6 +14,6 @@ test('shows a search box', () => {
     expect(wrapped.find(Search).length).toEqual(1)
 })
 
-test('shows a forecast for city', () => {
+test('shows a forecast component', () => {
     expect(wrapped.find(Forecast).length).toEqual(1)
 })
